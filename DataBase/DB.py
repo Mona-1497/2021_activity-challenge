@@ -1,18 +1,10 @@
 import mysql.connector
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="root1"
-)
+
+mydb = mysql.connector.connect(host="localhost",user="root", password='Mona100%')
 mycursor = mydb.cursor()
 mycursor.execute("CREATE DATABASE IF NOT EXISTS ActivityChallengeDB")
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="root1",
-    database="ActivityChallengeDB"
-)
+mydb = mysql.connector.connect( host="localhost",  user="root",  password="Mona100%",database="ActivityChallengeDB")
 
 mycursor = mydb.cursor()
 mycursor.execute("CREATE TABLE IF NOT EXISTS user (mail VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstName "
@@ -36,3 +28,4 @@ mycursor.execute("CREATE TABLE IF NOT EXISTS post (id INT PRIMARY KEY AUTO_INCRE
                  "text VARCHAR(255), video VARCHAR(255), dateposted DATETIME)")
 
 mycursor.execute("CREATE TABLE IF NOT EXISTS team (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50))")
+mydb.close()
