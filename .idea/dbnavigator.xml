@@ -17,7 +17,7 @@
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
-      <charset value="windows-1252" />
+      <charset value="windows-1255" />
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -71,7 +71,7 @@
           <config-type value="BASIC" />
           <database-version value="8.0" />
           <driver-source value="BUILTIN" />
-          <driver-library value="" />
+          <driver-library value="C:\Users\Mona_\PycharmProjects\projectfinal" />
           <driver value="" />
           <url-type value="DATABASE" />
           <host value="127.0.0.1" />
@@ -79,7 +79,7 @@
           <database value="mysql" />
           <type value="USER_PASSWORD" />
           <user value="root" />
-          <deprecated-pwd value="cm9vdDE=" />
+          <deprecated-pwd value="TW9uYTEwMCU=" />
         </database>
         <properties>
           <auto-commit value="false" />
