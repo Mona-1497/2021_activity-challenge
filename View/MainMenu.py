@@ -13,15 +13,21 @@ title.grid(row=0, column=2)
 
 
 def callback():
-    os.system('SearchAndChooseAct.py')
+    root.destroy()
+    os.system('options.py')
 
 
-photo = PhotoImage(file="../View/Pictures/play.png")
+
+photo = PhotoImage(file="../View/Pictures/start.png")
 startBtn = Button(root, image=photo, padx=100, bd=0, command=callback)
 startBtn.grid(row=1, column=1)
 
+def callback2():
+    root.destroy()
+    os.system('createoptions.py')
+
 createPhoto = PhotoImage(file="../View/Pictures/create.png")
-createBtn = Button(root, image=createPhoto, padx=100, bd=0)
+createBtn = Button(root, image=createPhoto, padx=100, bd=0,command=callback2)
 createBtn.grid(row=1, column=2)
 
 instPhoto = PhotoImage(file="../View/Pictures/instructions.png")
@@ -35,5 +41,9 @@ profileBtn.grid(row=2, column=1)
 groupPhoto = PhotoImage(file="../View/Pictures/groups.png")
 groupBtn = Button(root, image=groupPhoto, padx=100, bd=0)
 groupBtn.grid(row=2, column=2)
+
+setPhoto = PhotoImage(file="../View/Pictures/settings.png")
+setBtn = Button(root, image=setPhoto, padx=100, bd=0)
+setBtn.grid(row=2, column=3)
 
 root.mainloop()
