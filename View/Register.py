@@ -6,7 +6,7 @@ import os
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="root1",
+    password="Mona100%",
     database="ActivityChallengeDB"
 )
 
@@ -37,7 +37,7 @@ class Register:
             %s, %s, %s, %s, %s, %s)""", (self.email, self.password, self.name, self.lastName, self.birthDate,
                                          date.today()))
             mydb.commit()
-            os.system('SearchAndChooseAct.py')
+            os.system('MainMenu.py')
         else:
             print(name)
 
@@ -49,24 +49,24 @@ root['background'] = '#064134'
 root.geometry("1000x1000")
 label1 = Label(root, text="Sign Up", fg='black', font=200, bg='#064134', pady=20)
 label1.grid(row=1, column=0)
-name = Entry(root, fg='#DFE3EE')
+name = Entry(root)
 name.grid(row=2, column=0, pady=10)
 name.insert(0, "first name")
 space = Label(root, text="    ")
-lName = Entry(root, fg='#DFE3EE')
+lName = Entry(root)
 lName.insert(0, "name")
 lName.grid(row=2, column=3, pady=10)
-birthdate = Entry(root, fg='#DFE3EE')
+birthdate = Entry(root)
 birthdate.grid(row=3, column=0, pady=10)
-birthdate.insert(0, 'Birth date ')
-email = Entry(root, fg='#DFE3EE')
+birthdate.insert(0, 'year-month-day ')
+email = Entry(root)
 email.insert(0, "username@mail.com")
-email.grid(row=4, column=0, padx=50, pady=10)
-password = Entry(root, fg='#DFE3EE')
+email.grid(row=4, column=0,pady=10)
+password = Entry(root)
 password.insert(0, "password")
 password.grid(row=5, column=0, padx=50, pady=10)
 
-conPassword = Entry(root, fg='#DFE3EE')
+conPassword = Entry(root)
 conPassword.insert(0, "Confirm password")
 conPassword.grid(row=6, column=0, padx=50, pady=10)
 signUpButton = Button(root, text='Sign Up',

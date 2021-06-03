@@ -1,3 +1,4 @@
+import os
 from tkinter import *
 from tkinter import ttk
 import mysql.connector
@@ -61,6 +62,14 @@ def creat(root1):
     classifiedTo.set("select answer group")
     classifiedTo.place(x=300, y=150)
     Button(root2, text="Add Answer", bg='orange', command= lambda: classification.add_answer(classifiedTo.get(),answer.get())).place(x=330, y=240)
+
+    def back():
+        root2.destroy()
+        os.system('MainMenu.py')
+
+    photo = PhotoImage(file="../View/Pictures/back.png")
+    mybtn = Button(root2, image=photo, bg='#F39C12', pady=10, padx=20, command=back)
+    mybtn.place(x=330, y=300)
     root2.mainloop()
 
 
@@ -80,7 +89,9 @@ l2.place(x=400,y=100)
 e2=Entry(root)
 e2.place(x=450,y=140)
 Label(root,text='field',bg='#064134',fg='white',font=20).place(x=250,y=195)
-filedEntry=Entry(root)
+vlist=["biology","chemistry","physics",'math']
+filedEntry = ttk.Combobox(root, values=vlist)
+filedEntry.set("choose filed")
 filedEntry.place(x=300,y=200)
 Label(root,text='description',bg='#064134',fg='white',font=20).place(x=200,y=235)
 
@@ -90,5 +101,10 @@ descEntry.place(x=300,y=240)
 Addimg = PhotoImage(file = "../View/Pictures/Add.png")
 btn=Button(root,image=Addimg,bg='#064134',command=lambda :creat(root))
 btn.place(x=280,y=280)
-
+def back():
+    root.destroy()
+    os.system('createoptions.py')
+photo = PhotoImage(file="../View/Pictures/back.png")
+mybtn=Button(root,image=photo,bg='#F39C12',pady=10,padx=20,command=back)
+mybtn.place(x=280,y=400)
 root.mainloop()

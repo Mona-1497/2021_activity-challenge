@@ -1,3 +1,4 @@
+import os
 from tkinter import *
 from tkinter import ttk
 import mysql.connector
@@ -43,7 +44,7 @@ Combofiled = ttk.Combobox(root, values=vlist)
 Combofiled.set("select filed")
 Combofiled.place(x=380,y=120)
 List = Listbox(root, width=70, height=10,bg='#69966d',font=10,fg='yellow')
-List.place(x=20,y=180)
+List.place(x=120,y=180)
 
 
 sql="SELECT * FROM Classification WHERE filed=%s"
@@ -90,7 +91,12 @@ def select():
 
 
 Button(root, text="search ", bg="orange", command=select,justify=CENTER,padx=20).place(x=400,y=150)
-Button(root,text="select and start to classify",bg="orange",command=start,justify=CENTER,pady=10).place(x=380,y=450)
+Button(root,text="select and start to classify",bg="orange",command=start,justify=CENTER,pady=10).place(x=380,y=400)
 Label(root,text="search for a classification", font=20, pady=20, padx=20, bg='#064134', fg='white').place(x=320,y=40)
-
+def back():
+    root.destroy()
+    os.system('options.py')
+photo = PhotoImage(file="../View/Pictures/back.png")
+mybtn=Button(root,image=photo,bg='#F39C12',pady=10,padx=20,command=back)
+mybtn.place(x=350,y=450)
 root.mainloop()

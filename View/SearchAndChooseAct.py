@@ -13,6 +13,7 @@ photo = PhotoImage(file="../View/Pictures/search.png")
 
 
 def callback():
+    root.destroy()
     os.system('SearchAct.py')
 
 
@@ -30,6 +31,7 @@ photo2 = PhotoImage(file="../View/Pictures/play.png")
 
 
 def callback2():
+    root.destroy()
     os.system('RandomAct.py')
 
 
@@ -46,6 +48,7 @@ photo3 = PhotoImage(file="../View/Pictures/share.png")
 
 
 def callback3():
+    root.destroy()
     os.system('SharedAct.py')
 
 
@@ -66,7 +69,8 @@ photo4 = PhotoImage(file="../View/Pictures/back.png")
 
 
 def callback4():
-    os.system('MainMenu.py')
+    root.destroy()
+    os.system('options.py')
 
 
 backBtn = Button(root, image=photo4, command=callback4, borderwidth=0)

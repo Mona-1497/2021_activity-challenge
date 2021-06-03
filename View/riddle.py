@@ -81,6 +81,14 @@ def add_riddle_page(root1):
 
     resetbtn.place(x=650,y=200)
     Addbtn.place(x=650,y=280)
+
+    def back():
+        root.destroy()
+        os.system('MainMenu.py')
+
+    photo = PhotoImage(file="../View/Pictures/back.png")
+    mybtn = Button(root, image=photo, bg='#F39C12', pady=10, padx=20, command=back)
+    mybtn.place(x=700, y=450)
     root.mainloop()
 
 root=Tk()
@@ -101,6 +109,12 @@ Addimg = PhotoImage(file = "../View/Pictures/Add.png")
 
 addbtn=Button(root,image=Addimg,bd=0,bg='#064134',command=lambda :add_riddle_page(root))
 addbtn.place(x=400,y=180)
+def back():
+    root.destroy()
+    os.system('createoptions.py')
+photo = PhotoImage(file="../View/Pictures/back.png")
+mybtn=Button(root,image=photo,bg='#F39C12',pady=10,padx=20,command=back)
+mybtn.place(x=400,y=300)
 root.mainloop()
 
 

@@ -138,7 +138,7 @@ Combo.grid(row=1,column=1,ipadx=10)
 
 vlist=["math","science"]
 filedCombo = ttk.Combobox(root, values=vlist)
-filedCombo.set("select filed")
+filedCombo.set("select field")
 filedCombo.grid(row=1,column=2,ipadx=10)
 
 vlist=["English","Hebrew","Arabic"]
@@ -151,6 +151,12 @@ Addimg = PhotoImage(file = "C:/Users/Mona_/PycharmProjects/2021_activity-challen
 
 Addquesbtn=Button(root,image=Addimg,padx=100,bd=0,bg='#064134',command=lambda:addQuestionPage(root))
 Addquesbtn.grid(row=2,column=2)
+def back():
+    root.destroy()
+    os.system('createoptions.py')
+photo = PhotoImage(file="../View/Pictures/back.png")
+mybtn=Button(root,image=photo,bg='#F39C12',pady=10,padx=20,command=back)
+mybtn.place(x=200,y=200)
 root.mainloop()
 
 

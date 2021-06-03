@@ -9,7 +9,7 @@ root.title("Main Menu")
 root['background']='#064134'
 root.iconbitmap("C:/Users/Mona_/PycharmProjects/2021_activity-challenge")
 root.geometry("1000x1000")
-title=Label(root,text='       Main Menu',bg='#064134',font=30,fg='white',pady=10)
+title=Label(root,text='       Main Menu',bg='#064134',font=30,fg='orange',pady=10)
 title.grid(row=0,column=2)
 def callback():
     os.system('searchandchoosingact.py')
@@ -17,9 +17,12 @@ photo = PhotoImage(file = "C:/Users/Mona_/PycharmProjects/2021_activity-challeng
 startbtn=Button(root,image=photo,padx=100,bd=0,command=callback)
 startbtn.grid(row=1,column=1)
 
+def callback2():
+    os.system('createAct.py')
+    root.destroy()
 
 createphoto = PhotoImage(file = "C:/Users/Mona_/PycharmProjects/2021_activity-challenge/Model/create.png")
-createtbtn=Button(root,image=createphoto,padx=100,bd=0)
+createtbtn=Button(root,image=createphoto,padx=100,bd=0,command=callback2)
 createtbtn.grid(row=1,column=2)
 
 instphoto = PhotoImage(file = "C:/Users/Mona_/PycharmProjects/2021_activity-challenge/Model/inst.png")

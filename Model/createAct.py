@@ -3,7 +3,33 @@ from PIL import Image,ImageTk
 import webbrowser
 from tkinter import ttk
 import os
-import sys
+import mysql.connector
+
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="Mona100%",
+    database="ActivityChallengeDB"
+)
+
+mycursor = mydb.cursor(buffered=True)
+
+class createAct:
+    def __init__(self, level, filed, language, question, answer1, answer2, answer3):
+        self.level=level
+        self.filed=filed
+        self.language=language
+        self.question=question
+        self.ans1=answer1
+        self.ans2=answer2
+        self.ans3=answer3
+
+    def activity(self):
+            mycursor.execute("""INSERT INTO activities(level,filed, language, question, answer1, answer2,answer3) VALUES (
+                     %s, %s, %s, %s, %s,%s,%s)""",
+                             (self.level, self.filed, self.language, self.question, self.ans1, self.ans2, self.ans3))
+            mydb.commit()
+
 root = Tk()
 
 root.title("Searching For An Activity")
@@ -37,24 +63,26 @@ slb2.grid(row=4,column=2)
 quesEntry=Entry(root)
 quesEntry.grid(row=5,column=2,ipadx=100)
 
-Addphoto = PhotoImage(file = "C:/Users/Mona_/PycharmProjects/2021_activity-challenge/Model/Add.png")
-Addbtn=Button(root,image=Addphoto,padx=100,bd=0,bg='#064134')
-Addbtn.grid(row=5,column=3)
 
 anslb=Label(root,text="Add Three Possible Answers",bg='#064134',font=10,fg='white')
 anslb.grid(row=6 ,column=2)
-AnsEntry=Entry(root)
-AnsEntry.grid(row=7,column=2,ipadx=100)
+Ans1Entry=Entry(root)
+Ans1Entry.grid(row=7,column=2,ipadx=100)
+Ans2Entry=Entry(root)
+Ans2Entry.grid(row=8,column=2,ipadx=100)
+Ans3Entry=Entry(root)
+Ans3Entry.grid(row=9,column=2,ipadx=100)
 
 Addphoto2 = PhotoImage(file = "C:/Users/Mona_/PycharmProjects/2021_activity-challenge/Model/Add.png")
-Addbtn=Button(root,image=Addphoto2,padx=100,bd=0,bg='#064134')
-Addbtn.grid(row=7,column=3)
+Addbtn=Button(root,image=Addphoto2,padx=100,bd=0,bg='#064134',command=lambda: createAct(Combo.get(),
+        filedCombo.get(),lanCombo.get(),quesEntry.get(), Ans1Entry.get(),Ans2Entry.get(),Ans3Entry.get()).activity())
+Addbtn.grid(row=10,column=2)
 
 
 def callback4():
     os.system('MainMenu.py')
 photo4 = PhotoImage(file="C:/Users/Mona_/PycharmProjects/2021_activity-challenge/Model/back.png")
 backbtn=Button(root,image=photo4,command=callback4,borderwidth=0,bg='#064134')
-backbtn.grid(row=8,column=2)
+backbtn.grid(row=11,column=2)
 
 root.mainloop()

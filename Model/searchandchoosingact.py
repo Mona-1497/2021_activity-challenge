@@ -12,7 +12,7 @@ photo = PhotoImage(file = "C:/Users/Mona_/PycharmProjects/2021_activity-challeng
 def callback():
     os.system('SearchAct.py')
 
-searchbtn=Button(root,image=photo,padx=100,command=callback)
+searchbtn=Button(root,image=photo,padx=100,command=callback,bg='#064134')
 searchbtn.grid(row=3,column=1)
 
 s0=Label(root,text="             ",bg='#064134')
@@ -25,7 +25,7 @@ s1.grid(column=2)
 photo2 = PhotoImage(file = "C:/Users/Mona_/PycharmProjects/2021_activity-challenge/Model/random.png")
 def callback2():
     os.system('RandomAct.py')
-rndhbtn=Button(root,image=photo2,width=225,height=225,padx=100,command=callback2)
+rndhbtn=Button(root,image=photo2,width=225,height=225,padx=100,command=callback2,bg='#064134')
 rndhbtn.grid(row=3,column=3)
 rndlb=Label(root,text='Random Activity',font=5,pady=10,bg='#064134',fg='white')
 rndlb.grid(row=2,column=3)
@@ -37,7 +37,7 @@ s3.grid(column=4)
 photo3 = PhotoImage(file = "C:/Users/Mona_/PycharmProjects/2021_activity-challenge/Model/shared.png")
 def callback3():
     os.system('SharedAct.py')
-sharedbtn=Button(root,image=photo3,width=225,height=225,padx=100,command=callback3)
+sharedbtn=Button(root,image=photo3,width=225,height=225,padx=100,command=callback3,bg='#064134')
 sharedbtn.grid(row=3,column=5)
 shlb=Label(root,text='Shared Activity',font=5,pady=10,bg='#064134',fg='white')
 shlb.grid(row=2,column=5)
@@ -53,6 +53,6 @@ l3.grid(row=6,column=3)
 photo4=PhotoImage(file="C:/Users/Mona_/PycharmProjects/2021_activity-challenge/Model/back.png")
 def callback4():
     os.system('MainMenu.py')
-backbtn=Button(root,image=photo4,command=callback4,borderwidth=0)
+backbtn=Button(root,image=photo4,command=callback4,borderwidth=0,bg='#064134')
 backbtn.grid(row=7,column=3)
 root.mainloop()
