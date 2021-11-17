@@ -1,96 +1,76 @@
-import pygame
-from pygame.locals import *
+import turtle
+import os
+import mysql.connector
 
-# --- constants --- (UPPER_CASE names)
+mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="Mona100%",
+    database="ActivityChallengeDB",
+)
 
-SCREEN_WIDTH = 430
-SCREEN_HEIGHT = 410
-
-#BLACK = (  0,   0,   0)
-WHITE = (255, 255, 255)
-RED = (255,   0,   0)
-
-FPS = 30
-
-# --- classses --- (CamelCase names)
-
-# empty
-
-# --- functions --- (lower_case names)
-
-# empty
-
-# --- main ---
-
-# - init -
-
-pygame.init()
-
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-#screen_rect = screen.get_rect()
-
-pygame.display.set_caption("Tracking System")
-
-# - objects -
-rectangle = pygame.rect.Rect((80, 80, 80, 80))
+def read_query(connection, query):
+    cursor = connection.cursor()
+    cursor.execute(query)
+    result = cursor.fetchall()
+    return result
 
 
+mycursor = mydb.cursor(buffered=True)
+sql="Select * from questions where ActivityID=%s"
+mycursor.execute(sql,(1,))
+result = mycursor.fetchall()
+wn=turtle.Screen()
+wn.title("lets play")
+wn.bgcolor("black")
+wn.setup(width=800,height=600)
+#wn.bgpic("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures//stars.jpg")
 
-rectangle_draging = False
+#BAll
 
-# - mainloop -
-
-clock = pygame.time.Clock()
-
-running = True
-
-while running:
-
-    # - events -
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:
-                if rectangle.collidepoint(event.pos):
-                    rectangle_draging = True
-                    mouse_x, mouse_y = event.pos
-                    offset_x = rectangle.x - mouse_x
-                    offset_y = rectangle.y - mouse_y
-
-        elif event.type == pygame.MOUSEBUTTONUP:
-            if event.button == 1:
-                rectangle_draging = False
-
-        elif event.type == pygame.MOUSEMOTION:
-            if rectangle_draging:
-                mouse_x, mouse_y = event.pos
-                rectangle.x = mouse_x + offset_x
-                rectangle.y = mouse_y + offset_y
-
-    # - updates (without draws) -
-
-    # empty
-
-    # - draws (without updates) -
-
-    screen.fill(WHITE)
-
-    pygame.draw.rect(screen, (240, 0, 255), rectangle)
-    font = pygame.font.Font(None, 25)
-    text = font.render("You win!", True, (0,0,0))
-    text_rect = text.get_rect(center=(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2))
-    screen.blit(text, text_rect)
+ball=turtle.Turtle()
+ball.speed(0)
+ball.shape("circle")
+ball.color("white")
+ball.shapesize(10)
+ball.penup()
+ball.goto(0,200)
+ball.dx=0
+ball.dy=-2
+style = ('Courier', 20, 'italic')
+ball.fillcolor("gray")
 
 
-    pygame.display.flip()
+pen=ball.getpen()
+pen.write(result[0][1], font=style, align='center',move=True)
 
-    # - constant game speed / FPS -
 
-    clock.tick(FPS)
+def quit():
+    global flag
+    flag=False
+wn.listen()
+wn.onkeypress(quit,"q")
+flag=True
+i=0
+while flag:
+    wn.update()
+    ball.setx(ball.xcor()+ball.dx)
+    ball.sety(ball.ycor()+ball.dy)
+    if (ball.ycor()+ball.dy)==-600 and i<len(result)-1:
+        i = i + 1
+        pen.clear()
+        print(result[i][1])
+        ball = turtle.Turtle()
+        ball.speed(0)
+        ball.shape("circle")
+        ball.color("white")
+        ball.shapesize(10)
+        ball.penup()
+        ball.goto(0, 300)
+        ball.dx = 0
+        ball.dy = -2
+        ball.fillcolor("gray")
+        pen1 = ball.getpen()
+        pen1.write(result[i][1], font=style, align='center', move=True)
+        name = turtle.textinput("question no. "+str(i), "answer")
 
-# - end -
-
-pygame.quit()

@@ -24,7 +24,14 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8">
+        <schema name="activitychallengedb" object-types="function, view, procedure, table" />
+        <schema name="mysql" object-types="function, view, procedure, table" />
+        <schema name="sakila" object-types="function, view, procedure, table" />
+        <schema name="world" object-types="function, index, view, column, constraint, procedure, table, dataset trigger" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="bed2b331-29a1-41a2-b8aa-ac5d710437d8">
@@ -36,6 +43,20 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.matches" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.addriddle" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="world.city" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.questions" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.matching" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.riddle" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.addgroup" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.teammanager" active-filter-id="" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.answers" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.users" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.sharedact" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8" dataset="activitychallengedb.addactivity" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -83,6 +104,9 @@
         </database>
         <properties>
           <auto-commit value="false" />
+          <properties>
+            <property key="serverTimezone" value="UTC" />
+          </properties>
         </properties>
         <ssh-settings>
           <active value="false" />
@@ -104,12 +128,12 @@
           <charset value="UTF-8" />
           <session-management value="true" />
           <ddl-file-binding value="true" />
-          <database-logging value="false" />
+          <database-logging value="true" />
           <connect-automatically value="true" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />
           <environment-type value="default" />
-          <connectivity-timeout value="5" />
+          <connectivity-timeout value="30" />
           <idle-time-to-disconnect value="30" />
           <idle-time-to-disconnect-pool value="5" />
           <credential-expiry-time value="10" />

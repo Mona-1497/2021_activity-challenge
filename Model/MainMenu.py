@@ -2,7 +2,6 @@ from tkinter import *
 from PIL import Image,ImageTk
 import webbrowser
 import os
-import sys
 root = Tk()
 
 root.title("Main Menu")

@@ -2,8 +2,8 @@ from tkinter import *
 import mysql.connector
 import webbrowser
 import os
-
-
+current_user = os.getlogin()
+print(current_user)
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -26,10 +26,10 @@ welcome = Label(root, text="Log In", font=200, fg='black', bg='#064134')
 welcome.grid(row=1, column=1, padx=170, pady=20)
 
 label1 = Label(root, text="Log in with an existing email", bg='white', fg='black')
-email = Entry(root)
-email.insert(0, "username@mail.com")
+email = Entry(root,text="username@mail.com")
 email.grid(row=4, column=1, padx=50, pady=10)
-password = Entry(root)
+password = StringVar()
+password = Entry(root,textvariable=password, show='*')
 password.insert(0, "password")
 password.grid(row=5, column=1, padx=50, pady=20)
 
@@ -51,8 +51,6 @@ login_button = Button(root, command=lambda: checkLog(email.get(), password.get()
 login_button.grid(row=6, column=1)
 
 
-def open_attach():
-    webbrowser.open("https://www.facebook.com/")
 
 
 root.mainloop()
