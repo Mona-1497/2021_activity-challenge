@@ -7,6 +7,7 @@ import mysql.connector
 #import emoji
 import os
 import random
+current_user = os.getlogin()
 
 mydb = mysql.connector.connect(
     host="localhost",
@@ -87,7 +88,7 @@ searchBtn = Button(root, image=serch, text="search!",compound=LEFT,font=("bold",
 searchBtn.place(x=450,y=180)
 i=0
 j=0
-
+sql4="SELECT Score From users Where Name=%s"
 def again(root1,riddlebtn,result,label,speakbtn,speakbtn2,c):
     riddlebtn["state"] = "active"
     speakbtn["bg"]='#064134'
@@ -102,6 +103,12 @@ def again(root1,riddlebtn,result,label,speakbtn,speakbtn2,c):
         root2.title("finish activity")
         root2['background'] = '#064134'
         root2.geometry("1920x1080")
+        mycursor.execute(sql4, (current_user,))
+        score = mycursor.fetchall()
+        mycursor.execute("""UPDATE users
+                                     SET Score=%s
+                                        WHERE Name=%s""", ((score[0][0]) + j, current_user))
+        mydb.commit()
         Label(root2,text="Your Score Is: "+str(j)+"/"+str(len(result)),font=('bold',15),bg='#064134',fg='yellow',pady=30).place(x=550,y=20)
 
         img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/back.png"))

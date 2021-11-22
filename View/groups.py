@@ -152,7 +152,7 @@ def joinGroup():
     for i in range(len(myres)):
         Listgropus.insert(END, myres[i][0])
     lb2 = Label(root3, bg='#064134', fg='orange',font=12)
-    lb2.place(x=500,y=420)
+    lb2.place(x=500,y=450)
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/groupbtn.png"))
     resized_image = img.resize((50, 50), Image.ANTIALIAS)
     joinimg = ImageTk.PhotoImage(resized_image)

@@ -108,8 +108,8 @@ def add_match_page(root):
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/back.png"))
     resized_image = img.resize((80, 60), Image.ANTIALIAS)
     photo = ImageTk.PhotoImage(resized_image)
-    mybtn = Button(root1, image=photo,  pady=10, padx=20, command=back,bg='#064134',bd=0)
-    mybtn.place(x=20, y=580)
+    #mybtn = Button(root1, image=photo,  pady=10, padx=20, command=back,bg='#064134',bd=0)
+    #mybtn.place(x=20, y=580)
 
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/reset.png"))
     resized_image = img.resize((80, 50), Image.ANTIALIAS)

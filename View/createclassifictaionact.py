@@ -110,8 +110,8 @@ def creat(root1):
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/back.png"))
     resized_image = img.resize((80, 60), Image.ANTIALIAS)
     bbphoto = ImageTk.PhotoImage(resized_image)
-    mybtn = Button(root2, image=bbphoto, pady=10, padx=20, command=back,bd=0,bg='#064134')
-    mybtn.place(x=20, y=580)
+    #mybtn = Button(root2, image=bbphoto, pady=10, padx=20, command=back,bd=0,bg='#064134')
+   # mybtn.place(x=20, y=580)
 
 
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/reset.png"))
@@ -186,4 +186,14 @@ resized_image = img.resize((80, 60), Image.ANTIALIAS)
 photo = ImageTk.PhotoImage(resized_image)
 mybtn=Button(root,image=photo,pady=10,padx=20,command=back,bd=0,bg='#064134')
 mybtn.place(x=20,y=580)
+def callback4():
+    root.destroy()
+    os.system('MainMenu.py')
+
+
+img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/home.png"))
+resized_image = img.resize((50, 50), Image.ANTIALIAS)
+photo4 = ImageTk.PhotoImage(resized_image)
+homebtn = Button(root, image=photo4, command=callback4, borderwidth=0, bg='#064134')
+homebtn.place(x=20, y=20)
 root.mainloop()

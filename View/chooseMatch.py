@@ -21,6 +21,8 @@ def read_query(connection, query):
 
 
 mycursor = mydb.cursor(buffered=True)
+current_user = os.getlogin()
+
 root = Tk()
 
 root.title("Searching For A Riddle")
@@ -79,15 +81,27 @@ def selectMatch():
 
 indexlb=Label(root, text='', bg='#064134',fg='white', font=("bold", 12))
 indexlb.place(x=410, y=570)
-def finish(root1):
+sql4="SELECT Score From users Where Name=%s"
+
+def finish(root1,countTry):
     root1.destroy()
     root2 = Tk()
     root2['background'] = '#064134'
     root2.geometry("1920x1080")
     root2.title('finish activity')
     Font4 = ("Comic Sans MS", 30, "bold")
-
-    Label(root2, text="Great Job", font=Font4, fg="orange", bg='#064134', padx=100).place(x=450, y=20)
+    Label(root2, text="Great Job", font=Font4, fg="orange", bg='#064134', padx=100).place(x=440, y=15)
+    Label(root2,text='number of tries is: '+str(countTry)+' times',bg='#064134',fg='orange',font=("Comic Sans MS", 15,"bold")).place(x=500,y=75)
+    if countTry<=10:
+        mycursor.execute(sql4, (current_user,))
+        score = mycursor.fetchall()
+        mycursor.execute("""UPDATE users
+                                    SET Score=%s
+                                       WHERE Name=%s""", ((score[0][0]) + (10-countTry), current_user))
+        mydb.commit()
+        Label(root2, text="Your Score Is: "+str(10-countTry)+" points", font=("Comic Sans MS", 15,"bold"), bg='#064134',fg='yellow').place(x=500,y=120)
+    else:
+        Label(root2, text='to many tries,no points:(', font=("Comic Sans MS", 15,"bold"), bg='#064134',fg='yellow').place(x=500,y=120)
 
     def back1():
         root2.destroy()
@@ -102,7 +116,7 @@ def finish(root1):
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/fin2.png"))
     resized_image = img.resize((500, 500), Image.ANTIALIAS)
     finish = ImageTk.PhotoImage(resized_image)
-    Label(root2, image=finish, bd=0,bg='#064134').place(x=400,y=80)
+    Label(root2, image=finish, bd=0,bg='#064134').place(x=400,y=180)
     def callback4():
         root2.destroy()
         os.system('MainMenu.py')
@@ -124,7 +138,7 @@ def select():
     indexlb.config(text='')
     avalb.config(text='')
     try:
-     global count, ans_list, ans_dict
+     global count, ans_list, ans_dict,countTry
      match_id = (ListMatch.get(ANCHOR)[0],)
      mycursor.execute(sql2, match_id)
      result = mycursor.fetchall()
@@ -161,13 +175,14 @@ def select():
      for i in range(0, len(result)):
         values.append(result[i][1])
      count = 0
+     countTry=0
      ans_list = []
      ans_dict = {}
      lb = Label(root1,bd=0,text='', font=("Comic Sans MS", 15),bg="#064134", fg='yellow')
 
      random.shuffle(result)
      def clicked(btn, number):
-        global count, ans_list, ans_dict
+        global count, ans_list, ans_dict,countTry
         if btn["text"] == ' ' and count < 2:
            btn["text"] =result[number][1]
            ans_list.append(number)
@@ -186,6 +201,7 @@ def select():
             else:
                 lb.config(text="try again!!",fg='red',image=notgood,compound=LEFT)
                 count = 0
+                countTry+=1
                 ans_list = []
                 for key in ans_dict:
                     key["text"] = " "
@@ -199,7 +215,7 @@ def select():
 
         if flag!=True:
 
-            b1=Button(root1,text='  finish',font=("bold",15),fg='white', image=fin,compound=LEFT,bd=0,pady=10, bg='#064134',command=lambda: finish(root1))
+            b1=Button(root1,text='  finish',font=("bold",15),fg='white', image=fin,compound=LEFT,bd=0,pady=10, bg='#064134',command=lambda: finish(root1,countTry))
             b1.pack()
 
         flag=False

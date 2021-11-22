@@ -26,10 +26,8 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="bed2b331-29a1-41a2-b8aa-ac5d710437d8">
-        <schema name="activitychallengedb" object-types="function, view, procedure, table" />
-        <schema name="mysql" object-types="function, view, procedure, table" />
-        <schema name="sakila" object-types="function, view, procedure, table" />
-        <schema name="world" object-types="function, index, view, column, constraint, procedure, table, dataset trigger" />
+        <schema name="activitychallengedb" object-types="view, table" />
+        <schema name="world" object-types="view, table" />
       </connection>
     </loaded-nodes>
   </component>

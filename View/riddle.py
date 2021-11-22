@@ -151,6 +151,9 @@ def add_riddle_page(root1):
         if sheetEntry.get() in wb.sheetnames:
          sh = wb[sheetEntry.get()]
          row = sh.max_row
+         if (row - 1) > int(num):
+             lb.config(text="file contains riddles more than should be!")
+             return
          #column = sh.max_column
          for i in range(2, row + 1):
             riddle.addRiddle(sh[i][0].value,sh[i][1].value,sh[i][2].value,Addbtn,resetbtn,importbtn,root)
@@ -161,8 +164,8 @@ def add_riddle_page(root1):
 
 
 
-    lb = Label(root, text='', bg='#064134', fg='orange',font=("Comic Sans MS", 15))
-    lb.place(x=240, y=250)
+    lb = Label(root, text='', bg='#064134',wraplength=300, fg='orange',font=("Comic Sans MS", 15))
+    lb.place(x=320, y=250)
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/import.png"))
     resized_image = img.resize((80, 70), Image.ANTIALIAS)
     importphoto = ImageTk.PhotoImage(resized_image)
@@ -185,8 +188,8 @@ def add_riddle_page(root1):
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/back.png"))
     resized_image = img.resize((80, 60), Image.ANTIALIAS)
     photo = ImageTk.PhotoImage(resized_image)
-    mybtn = Button(root, image=photo, pady=10, padx=20, command=back,bd=0,bg='#064134')
-    mybtn.place(x=20, y=580)
+    #mybtn = Button(root, image=photo, pady=10, padx=20, command=back,bd=0,bg='#064134')
+    #mybtn.place(x=20, y=580)
     root.mainloop()
 
 root=Tk()

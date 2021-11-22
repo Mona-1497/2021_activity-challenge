@@ -159,13 +159,17 @@ def addQuestionPage(root1):
      if sheetEntry.get() in wb.sheetnames:
         sh = wb[sheetEntry.get()]
         row = sh.max_row
+        if (row-1)>int(num):
+            lb.config(text="file contains questions more than should be!")
+            return
         for i in range(2, row + 1):
             activity.addQuestion(sh[i][0].value,sh[i][1].value,sh[i][2].value,sh[i][3].value,sh[i][4].value,Addbtn,resetbtn,root,importbtn)
         lb.config(text='file imported successfully')
+
      else:
       lb.config(text="sheet doesn't exists")
 
-    lb = Label(root, text='', bg='#064134', fg='orange',font=("Comic Sans MS", 15))
+    lb = Label(root, text='', bg='#064134', fg='orange',wraplength=300,font=("Comic Sans MS", 15))
     lb.place(x=320, y=200)
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/import.png"))
     resized_image = img.resize((80, 70), Image.ANTIALIAS)
@@ -195,8 +199,8 @@ def addQuestionPage(root1):
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/back.png"))
     resized_image = img.resize((80, 60), Image.ANTIALIAS)
     photo4 = ImageTk.PhotoImage(resized_image)
-    backbtn = Button(root, image=photo4, command=callback4, borderwidth=0,bg='#064134',bd=0)
-    backbtn.place(x=20,y=580)
+    #backbtn = Button(root, image=photo4, command=callback4, borderwidth=0,bg='#064134',bd=0)
+    #backbtn.place(x=20,y=580)
 
     def home():
 
