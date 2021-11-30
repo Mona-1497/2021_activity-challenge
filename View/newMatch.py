@@ -126,9 +126,11 @@ def add_match_page(root):
                 sql = 'DELETE FROM matches WHERE id=%s'
                 mycursor.execute(sql, (currentID,))
                 mydb.commit()
-
-        root1.destroy()
-        os.system('MainMenu.py')
+                root1.destroy()
+                os.system('MainMenu.py')
+        else:
+         root1.destroy()
+         os.system('MainMenu.py')
 
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/home.png"))
     resized_image = img.resize((50, 50), Image.ANTIALIAS)

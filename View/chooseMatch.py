@@ -1,7 +1,7 @@
 from time import sleep
 from tkinter import *
 from PIL import Image, ImageTk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import mysql.connector
 import os
 import random
@@ -154,8 +154,16 @@ def select():
      frame.pack(pady=10)
 
      def callback4():
-         root1.destroy()
-         os.system('MainMenu.py')
+         if flag==True:
+           response = messagebox.askyesno("?!", 'activity not finished,do you want to leave?!')
+           if response==1:
+             root1.destroy()
+             os.system('MainMenu.py')
+         else:
+             root1.destroy()
+             os.system('MainMenu.py')
+
+
 
      img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/home.png"))
      resized_image = img.resize((50, 50), Image.ANTIALIAS)
@@ -214,9 +222,9 @@ def select():
 
 
         if flag!=True:
-
             b1=Button(root1,text='  finish',font=("bold",15),fg='white', image=fin,compound=LEFT,bd=0,pady=10, bg='#064134',command=lambda: finish(root1,countTry))
             b1.pack()
+
 
         flag=False
 

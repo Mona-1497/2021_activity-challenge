@@ -1,7 +1,7 @@
 
 from tkinter import *
 from PIL import Image, ImageTk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import mysql.connector
 
 #import emoji
@@ -281,8 +281,9 @@ def select():
      result = mycursor.fetchall()
 
      def callback4():
-         root.destroy()
-         os.system('MainMenu.py')
+        root.destroy()
+        os.system('MainMenu.py')
+
 
      img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/home.png"))
      resized_image = img.resize((50, 50), Image.ANTIALIAS)
@@ -361,8 +362,14 @@ def select():
      btn.place(x=500,y=425)
 
      def callback4():
-         root1.destroy()
-         os.system('MainMenu.py')
+         if i < len(result):
+             response = messagebox.askyesno("?!", 'activity not finished,do you want to leave?!')
+             if response == 1:
+                 root1.destroy()
+                 os.system('MainMenu.py')
+         else:
+             root1.destroy()
+             os.system('MainMenu.py')
 
      img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/home.png"))
      resized_image = img.resize((50, 50), Image.ANTIALIAS)

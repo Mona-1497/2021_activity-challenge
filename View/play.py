@@ -1,7 +1,7 @@
 import os
 from random import random
 from tkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import mysql.connector
 from PIL import ImageTk,Image
 import random
@@ -222,10 +222,18 @@ def start():
      l2.place(x=640, y=105)
      Font3 = ("Comic Sans MS", 30)
      Label(root1,text="Classify",font=Font3,fg='orange',bg='#064134').place(x=500,y=20)
-
+     global finished
+     finished=0
      def callback4():
-         root1.destroy()
-         os.system('MainMenu.py')
+         if finished==0:
+           response = messagebox.askyesno("?!", 'activity not finished,do you want to leave?!')
+           if response == 1:
+             root1.destroy()
+             os.system('MainMenu.py')
+         else:
+             root1.destroy()
+             os.system('MainMenu.py')
+
 
      img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/home.png"))
      resized_image = img.resize((50, 50), Image.ANTIALIAS)
@@ -247,6 +255,7 @@ def start():
        l3.bind("<ButtonRelease>", end_x)
        while flag != True:
            root1.update()
+     finished=1
      img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/fin.png"))
      resized_image = img.resize((50, 50), Image.ANTIALIAS)
      fin = ImageTk.PhotoImage(resized_image)

@@ -130,9 +130,11 @@ def creat(root1):
                 sql = 'DELETE FROM classification WHERE id=%s'
                 mycursor.execute(sql, (currentID,))
                 mydb.commit()
-        root2.destroy()
-        os.system('MainMenu.py')
-
+                root2.destroy()
+                os.system('MainMenu.py')
+        else:
+            root2.destroy()
+            os.system('MainMenu.py')
 
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/home.png"))
     resized_image = img.resize((50, 50), Image.ANTIALIAS)

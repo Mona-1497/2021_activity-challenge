@@ -126,8 +126,11 @@ def add_riddle_page(root1):
                 sql = 'DELETE FROM addriddle WHERE id=%s'
                 mycursor.execute(sql, (currentID,))
                 mydb.commit()
-        root.destroy()
-        os.system('MainMenu.py')
+                root.destroy()
+                os.system('MainMenu.py')
+        else:
+            root.destroy()
+            os.system('MainMenu.py')
 
     img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/home.png"))
     resized_image = img.resize((50, 50), Image.ANTIALIAS)

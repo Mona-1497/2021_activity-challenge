@@ -70,7 +70,7 @@ def start():
                     VALUES (%s, %s, %s)""",(current_user,0,1))
       mydb.commit()
     while progress['value'] < 100:
-        progress['value'] += 1
+        progress['value'] += 10
         proglb.config(text=(int(progress['value']), "%"))
         root.update_idletasks()
         time.sleep(0.05)
@@ -82,5 +82,6 @@ resized_image = img.resize((300, 300), Image.ANTIALIAS)
 photo = ImageTk.PhotoImage(resized_image)
 startBtn = Button(root, image=photo, padx=100, bd=0, command=start,bg='#064134')
 startBtn.place(x=450,y=220)
+
 
 root.mainloop()

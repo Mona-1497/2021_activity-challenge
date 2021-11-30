@@ -1,5 +1,7 @@
 import os
 from tkinter import *
+from tkinter import messagebox
+
 import pyttsx3
 from PIL import Image, ImageTk
 import mysql.connector
@@ -222,8 +224,14 @@ def select():
      btn.place(x=500, y=425)
 
      def callback4():
-         root1.destroy()
-         os.system('MainMenu.py')
+         if i < len(result):
+             response = messagebox.askyesno("?!", 'activity not finished,do you want to leave?!')
+             if response == 1:
+                 root1.destroy()
+                 os.system('MainMenu.py')
+         else:
+             root1.destroy()
+             os.system('MainMenu.py')
 
      img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/home.png"))
      resized_image = img.resize((50, 50), Image.ANTIALIAS)
@@ -263,6 +271,8 @@ if level[0][0]==5:
 img = (Image.open("C://Users//Mona_//PycharmProjects//2021_activity-challenge//Pictures/select.png"))
 resized_image = img.resize((50, 50), Image.ANTIALIAS)
 sel = ImageTk.PhotoImage(resized_image)
+Label(root, text="your current level is: " + str(level[0][0]),font=("Comic Sans MS", 15), bg='#064134', fg='orange').place(x=250, y=100)
+
 Button(root,text='Select and start activity',image=sel,compound=LEFT, bg='#064134', bd=0,font=("bold",12),fg='white', command=select).place(x=450, y=450)
 
 
